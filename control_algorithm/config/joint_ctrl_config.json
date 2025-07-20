@@ -1,0 +1,66 @@
+{
+   "joint1" : {
+      "PVT_LPF_Fc" : 20,
+      "kd" : 10.0,
+      "kp" : 100.0,
+      "maxPos" : 2.96706,
+      "maxSpeed" : 1.48,
+      "maxTorque" : 176,
+      "minPos" : -2.96706
+   },
+   "joint2" : {
+      "PVT_LPF_Fc" : 20,
+      "kd" : 1000.0,
+      "kp" : 6000.0,
+      "maxPos" : 2.0944,
+      "maxSpeed" : 1.48,
+      "maxTorque" : 176,
+      "minPos" : -2.0944
+   },
+   "joint3" : {
+      "PVT_LPF_Fc" : 20,
+      "kd" : 10.0,
+      "kp" : 100.0,
+      "maxPos" : 2.96706,
+      "maxSpeed" : 1.75,
+      "maxTorque" : 110,
+      "minPos" : -2.96706
+   },
+   "joint4" : {
+      "PVT_LPF_Fc" : 20,
+      "kd" : 600.0,
+      "kp" : 2500.0,
+      "maxPos" : 2.0944,
+      "maxSpeed" : 1.31,
+      "maxTorque" : 110,
+      "minPos" : -2.0944
+   },
+   "joint5" : {
+      "PVT_LPF_Fc" : 20,
+      "kd" : 10.0,
+      "kp" : 100.0,
+      "maxPos" : 2.96706,
+      "maxSpeed" : 2.27,
+      "maxTorque" : 110,
+      "minPos" : -2.96706
+   },
+   "joint6" : {
+      "PVT_LPF_Fc" : 20,
+      "kd" : 10.0,
+      "kp" : 100.0,
+      "maxPos" : 2.0944,
+      "maxSpeed" : 2.36,
+      "maxTorque" : 40,
+      "minPos" : -2.0944
+   },
+   "joint7" : {
+      "PVT_LPF_Fc" : 20,
+      "kd" : 10.0,
+      "kp" : 1000.0,
+      "maxPos" : 3.05433,
+      "maxSpeed" : 2.36,
+      "maxTorque" : 40,
+      "minPos" : -3.05433
+   }
+
+}
