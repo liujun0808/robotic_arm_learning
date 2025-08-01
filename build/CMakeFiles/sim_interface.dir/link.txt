@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsim_interface.a CMakeFiles/sim_interface.dir/sim_interface/src/GLFW_callback.cpp.o CMakeFiles/sim_interface.dir/sim_interface/src/MJ_interface.cpp.o
+/usr/bin/ranlib libsim_interface.a
