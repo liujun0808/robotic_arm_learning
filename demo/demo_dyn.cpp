@@ -186,7 +186,7 @@ int main(int argc, char **argv)
     //             -0.0001, 1.0000, 0.0072,
     //             0.6895, 0.0052, -0.7242;
     tool0_rot_des<<-0.71595  ,0.00008 , 0.69815,
-                    0.00239  ,0.99999 , 0.00233 ,
+                    0.00239  ,0.99999 , 0.00233,
                     -0.69815  ,0.00333 ,-0.71595;
     tool0_rot_des = eul2Rot(0.0,3.1415,0.0);
     auto res = KinDynSolve.computeIK(tool0_rot_des,tool0_pos_des);
@@ -200,13 +200,15 @@ int main(int argc, char **argv)
             simTime = mj_data->time;
             
             mj_interface.updateSensorValues();
+            // printWorldPose(mj_model,mj_data,"attachment_site",0);
+            // std::cout<<"----------------------"<<std::endl;
+            ui.record_trajectory_site(mj_model,mj_data,"attachment_site");
             mj_interface.dataBusWrite(robotState);// 写入关节数据实时值
-            if (simTime>=5)
+            if (simTime>=2)
             {
                 /* code */
                 res = KinDynSolve.computeIK(tool0_rot_des,tool0_pos_des);
                 tau_des = KinDynSolve.computeForwordTau(res.jointPoseRes,dq_des,ddq_des); 
-                // std::cout<<"--------"<<tau_des.transpose()<<std::endl;
                 robotState.motors_pos_des = eigen2std(res.jointPoseRes);
                 robotState.motors_tor_des = eigen2std(tau_des);
             }else{
@@ -221,15 +223,16 @@ int main(int argc, char **argv)
             {
                 pvtCtr.calMotorsPVT(30/1000.0/180.0*3.1415);
             }
-            // pvtCtr.calMotorsPVT();
             pvtCtr.dataBusWrite(robotState); // 将计算得到的转矩写入数据总线
             mj_interface.setMotorsTorque(robotState.motors_tor_out);
             
         }
-        if (mj_data->time>=simEndTime+5)
-        {
+        if (mj_data->time>=simEndTime)
+        {   
+
             printWorldPose(mj_model,mj_data,"attachment_site",0);
             std::cout<<"----------------------"<<std::endl;
+            KinDynSolve.print_tool0_pos();
             break;
         }
         ui.updateScene();

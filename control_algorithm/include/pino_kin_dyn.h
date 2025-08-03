@@ -45,6 +45,7 @@ public:
     void dataWrite(DataBus &robotState);
     void computeJ_dJ();
     void computeDyn();
+    void print_tool0_pos();
     Eigen::VectorXd computeForwordTau(Eigen::VectorXd &q_des,Eigen::VectorXd &dq_des,Eigen::VectorXd &ddq_des);   
     IkRes computeIK(const Eigen::Matrix3d &tool_R_res,const Eigen::Vector3d &tool0_pos_res);
 

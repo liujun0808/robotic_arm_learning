@@ -1,5 +1,6 @@
 #include "GLFW_callback.h"
 
+
 UIctr::UIctr(mjModel *modelIn, mjData *dataIn) {
     mj_model=modelIn;
     mj_data=dataIn;
@@ -69,7 +70,7 @@ void UIctr::createWindow(const char* windowTitle, bool saveVideo) {
     mjv_defaultOption(&opt);
     mjv_defaultScene(&scn);
     mjr_defaultContext(&con);
-    mjv_makeScene(mj_model, &scn, 2000);                // space for 2000 objects
+    mjv_makeScene(mj_model, &scn, 20000);                // space for 2000 objects
     mjr_makeContext(mj_model, &con, mjFONTSCALE_150);   // model-specific context
     mjv_moveCamera(mj_model, mjMOUSE_ROTATE_H, 0.0, 0.0, &scn, &cam);
 
@@ -94,6 +95,22 @@ void UIctr::createWindow(const char* windowTitle, bool saveVideo) {
     }
 }
 
+void UIctr::record_trajectory_site(const mjModel*m ,const mjData* d,const std::string &site) {
+    int site_id = mj_name2id(m, mjOBJ_SITE, site.c_str());
+    if (site_id != -1) {
+        TrajectoryPoint point;
+        mju_copy3(point.pos, d->site_xpos + 3*site_id);
+        point.time = d->time;
+        
+        ee_tool0_trajectory.push_back(point);
+        
+        // 限制轨迹长度
+        if (ee_tool0_trajectory.size() > MAX_TRAJECTORY_POINTS) {
+            ee_tool0_trajectory.erase(ee_tool0_trajectory.begin());
+        }
+    }
+}
+
 void UIctr::record_trajectory(const mjModel*m ,const mjData* d,const std::string &body) {
     int link_id = mj_name2id(m, mjOBJ_BODY, body.c_str());
     if (link_id != -1) {
@@ -111,43 +128,35 @@ void UIctr::record_trajectory(const mjModel*m ,const mjData* d,const std::string
 }
 // 渲染轨迹
 void UIctr::render_trajectory(mjvScene* scn) {
-    if (left_foot_trajectory.size() < 2) return;
+    if (ee_tool0_trajectory.size() < 2) return;
     
     // 轨迹颜色 (黄色)
-    mjtNum rgba[4] = {1, 1, 0, 0.7};
+    const float rgba[4] = {0, 1.0, 1.0, 1};
     
     // 绘制轨迹线
-    for (size_t i = 1; i < left_foot_trajectory.size(); i++) {
-        // 检查场景是否还能容纳更多几何体
-        if (scn->ngeom >= scn->maxgeom) break;
+    // for (size_t i = 1; i < ee_tool0_trajectory.size(); i++) {
+    //     // 检查场景是否还能容纳更多几何体
+    //     if (scn->ngeom >= scn->maxgeom) break;
         
-        // 获取当前几何体指针
-        mjvGeom* geom = &scn->geoms[scn->ngeom];
+    //     // 获取当前几何体指针
+    //     mjvGeom* geom = &scn->geoms[scn->ngeom];
         
-        // 初始化线段几何体
-        mjv_initGeom(geom, mjGEOM_LINE, NULL, rgba, NULL, NULL);
+    //     // 初始化线段几何体
+    //     TrajectoryPoint point = ee_tool0_trajectory[i];
+    //     mjtNum size[3] = {0.0, 0.0 , 0.005};  // 前两个参数无用？ 第三个参数定义线条的长度
+    //     mjv_initGeom(geom, mjGEOM_LINE, size, point.pos ,NULL,rgba);
         
-        // 设置线段参数
-        geom->size[0] = left_foot_trajectory[i-1].pos[0];  // 起点X
-        geom->size[1] = left_foot_trajectory[i-1].pos[1];  // 起点Y
-        geom->size[2] = left_foot_trajectory[i-1].pos[2];  // 起点Z
-        geom->size[3] = left_foot_trajectory[i].pos[0];    // 终点X
-        geom->size[4] = left_foot_trajectory[i].pos[1];    // 终点Y
-        geom->size[5] = left_foot_trajectory[i].pos[2];    // 终点Z
-        geom->size[6] = 0.0001;  // 线宽
-        
-        // 增加几何体计数
-        scn->ngeom++;
-    }
+    //     // 增加几何体计数
+    //     scn->ngeom++;
+    // }
     
     // 绘制轨迹点（可选）
-    rgba[3] = 1.0; // 不透明度设为100%
-    for (const auto& point : left_foot_trajectory) {
+    for (const auto& point : ee_tool0_trajectory) {
         if (scn->ngeom >= scn->maxgeom) break;
         
         mjvGeom* geom = &scn->geoms[scn->ngeom];
-        mjv_initGeom(geom, mjGEOM_SPHERE, NULL, rgba, point.pos, NULL);
-        geom->size[0] = 0.0001;  // 球体半径
+        mjtNum size[3] = {0.002, 0.0 , 0.0};  // 球体半径
+        mjv_initGeom(geom, mjGEOM_SPHERE, size,  point.pos, NULL,rgba);
         scn->ngeom++;
     }
 }
@@ -175,10 +184,10 @@ void UIctr::updateScene() {
 
     // update scene and render
     mjv_updateScene(mj_model, mj_data, &opt, NULL, &cam, mjCAT_ALL, &scn);
-    // if (!left_foot_trajectory.empty())
-    // {
-    //     render_trajectory(&scn);
-    // }
+    if (!ee_tool0_trajectory.empty())
+    {
+        render_trajectory(&scn);
+    }
     glfwGetFramebufferSize(window, &viewport.width, &viewport.height);
     mjr_render(viewport, &scn, &con);
     std::string timeStr = "Simulation Time: " + std::to_string(mj_data->time);
@@ -186,7 +195,6 @@ void UIctr::updateScene() {
     std::sprintf(buffer, "Time: %.3f", mj_data->time);
 
     mjr_overlay(mjFONT_NORMAL, mjGRID_TOPRIGHT, viewport, buffer, NULL, &con);
-
 
     // swap OpenGL buffers (blocking call due to v-sync)
     glfwSwapBuffers(window);

@@ -162,8 +162,8 @@ Pin_KinDyn::IkRes Pin_KinDyn::computeIK(const Eigen::Matrix3d &tool_R_res,const 
     {
         pinocchio::forwardKinematics(arm,data_arm,qIk);
         pinocchio::updateFramePlacements(arm,data_arm);
-        pinocchio::SE3 test_q = data_arm.oMf[ee_link];
-        std::cout <<"ee_link id in urdf"<<ee_link<< "Translation: " << test_q.translation().transpose() << std::endl;
+        // pinocchio::SE3 test_q = data_arm.oMf[ee_link];
+        // std::cout <<"ee_link id in urdf"<<ee_link<< "Translation: " << test_q.translation().transpose() << std::endl;
         const pinocchio::SE3 iMd = data_arm.oMf[ee_link].actInv(oMdesL); // link7在base（world与base重合）下的位姿求逆后右乘期望点位姿 得到当前与期望位姿间的误差位姿
         err = pinocchio::log6(iMd).toVector();//SE(3)->se(3)  李群 对数映射 至李代数   将位姿误差转为twist 空间向量 【线速度， 角速度】T
         if (err.norm()<=eps)
@@ -199,4 +199,9 @@ Pin_KinDyn::IkRes Pin_KinDyn::computeIK(const Eigen::Matrix3d &tool_R_res,const 
     }
     res.jointPoseRes = qIk;
     return res;
+}
+
+void Pin_KinDyn::print_tool0_pos(){
+    pinocchio::SE3 test_q = data_arm.oMf[ee_link];
+    std::cout <<"ee_link id in urdf"<<ee_link<< "Translation: " << test_q.translation().transpose() << std::endl;
 }

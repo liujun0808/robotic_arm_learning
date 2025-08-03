@@ -4,7 +4,7 @@
 #include <string>
 #include <memory>
 #include "Eigen/Dense"
-
+#include <iostream>
 class UIctr{
 public:
     GLFWwindow *window;
@@ -60,7 +60,9 @@ public:
     };
     // 全局轨迹存储
     std::vector<TrajectoryPoint> left_foot_trajectory;
-    const int MAX_TRAJECTORY_POINTS = 1000; // 最大轨迹点数
+    std::vector<TrajectoryPoint> ee_tool0_trajectory;    
+    const int MAX_TRAJECTORY_POINTS = 10000; // 最大轨迹点数
+    void record_trajectory_site(const mjModel*m,const mjData* d,const std::string &site);
     void record_trajectory(const mjModel*m,const mjData* d,const std::string &body);
     void render_trajectory(mjvScene* scn);
 private:
