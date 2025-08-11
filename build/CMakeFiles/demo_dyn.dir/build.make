@@ -108,6 +108,10 @@ demo_dyn: /opt/pinocchio/lib/libpinocchio_default.so.3.7.0
 demo_dyn: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
 demo_dyn: /usr/lib/x86_64-linux-gnu/libjsoncpp.so.1.7.4
 demo_dyn: /opt/qpOASES/lib/libqpOASES.a
+demo_dyn: /opt/ros/noetic/lib/x86_64-linux-gnu/libompl.so
+demo_dyn: /usr/lib/x86_64-linux-gnu/libboost_serialization.so
+demo_dyn: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+demo_dyn: /usr/lib/x86_64-linux-gnu/libboost_system.so
 demo_dyn: CMakeFiles/demo_dyn.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/lj/project/force_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable demo_dyn"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/demo_dyn.dir/link.txt --verbose=$(VERBOSE)

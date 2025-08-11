@@ -97,10 +97,24 @@ CMakeFiles/control_algorithm.dir/control_algorithm/src/pino_kin_dyn.cpp.s: cmake
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/control_algorithm.dir/control_algorithm/src/pino_kin_dyn.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lj/project/force_control/control_algorithm/src/pino_kin_dyn.cpp -o CMakeFiles/control_algorithm.dir/control_algorithm/src/pino_kin_dyn.cpp.s
 
+CMakeFiles/control_algorithm.dir/control_algorithm/src/planner.cpp.o: CMakeFiles/control_algorithm.dir/flags.make
+CMakeFiles/control_algorithm.dir/control_algorithm/src/planner.cpp.o: /home/lj/project/force_control/control_algorithm/src/planner.cpp
+CMakeFiles/control_algorithm.dir/control_algorithm/src/planner.cpp.o: CMakeFiles/control_algorithm.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lj/project/force_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/control_algorithm.dir/control_algorithm/src/planner.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/control_algorithm.dir/control_algorithm/src/planner.cpp.o -MF CMakeFiles/control_algorithm.dir/control_algorithm/src/planner.cpp.o.d -o CMakeFiles/control_algorithm.dir/control_algorithm/src/planner.cpp.o -c /home/lj/project/force_control/control_algorithm/src/planner.cpp
+
+CMakeFiles/control_algorithm.dir/control_algorithm/src/planner.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/control_algorithm.dir/control_algorithm/src/planner.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/lj/project/force_control/control_algorithm/src/planner.cpp > CMakeFiles/control_algorithm.dir/control_algorithm/src/planner.cpp.i
+
+CMakeFiles/control_algorithm.dir/control_algorithm/src/planner.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/control_algorithm.dir/control_algorithm/src/planner.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/lj/project/force_control/control_algorithm/src/planner.cpp -o CMakeFiles/control_algorithm.dir/control_algorithm/src/planner.cpp.s
+
 CMakeFiles/control_algorithm.dir/control_algorithm/src/pvt_ctrl.cpp.o: CMakeFiles/control_algorithm.dir/flags.make
 CMakeFiles/control_algorithm.dir/control_algorithm/src/pvt_ctrl.cpp.o: /home/lj/project/force_control/control_algorithm/src/pvt_ctrl.cpp
 CMakeFiles/control_algorithm.dir/control_algorithm/src/pvt_ctrl.cpp.o: CMakeFiles/control_algorithm.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lj/project/force_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/control_algorithm.dir/control_algorithm/src/pvt_ctrl.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lj/project/force_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/control_algorithm.dir/control_algorithm/src/pvt_ctrl.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/control_algorithm.dir/control_algorithm/src/pvt_ctrl.cpp.o -MF CMakeFiles/control_algorithm.dir/control_algorithm/src/pvt_ctrl.cpp.o.d -o CMakeFiles/control_algorithm.dir/control_algorithm/src/pvt_ctrl.cpp.o -c /home/lj/project/force_control/control_algorithm/src/pvt_ctrl.cpp
 
 CMakeFiles/control_algorithm.dir/control_algorithm/src/pvt_ctrl.cpp.i: cmake_force
@@ -114,7 +128,7 @@ CMakeFiles/control_algorithm.dir/control_algorithm/src/pvt_ctrl.cpp.s: cmake_for
 CMakeFiles/control_algorithm.dir/control_algorithm/src/useful_math.cpp.o: CMakeFiles/control_algorithm.dir/flags.make
 CMakeFiles/control_algorithm.dir/control_algorithm/src/useful_math.cpp.o: /home/lj/project/force_control/control_algorithm/src/useful_math.cpp
 CMakeFiles/control_algorithm.dir/control_algorithm/src/useful_math.cpp.o: CMakeFiles/control_algorithm.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lj/project/force_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/control_algorithm.dir/control_algorithm/src/useful_math.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/lj/project/force_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/control_algorithm.dir/control_algorithm/src/useful_math.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/control_algorithm.dir/control_algorithm/src/useful_math.cpp.o -MF CMakeFiles/control_algorithm.dir/control_algorithm/src/useful_math.cpp.o.d -o CMakeFiles/control_algorithm.dir/control_algorithm/src/useful_math.cpp.o -c /home/lj/project/force_control/control_algorithm/src/useful_math.cpp
 
 CMakeFiles/control_algorithm.dir/control_algorithm/src/useful_math.cpp.i: cmake_force
@@ -129,6 +143,7 @@ CMakeFiles/control_algorithm.dir/control_algorithm/src/useful_math.cpp.s: cmake_
 control_algorithm_OBJECTS = \
 "CMakeFiles/control_algorithm.dir/control_algorithm/src/lpf_fst.cpp.o" \
 "CMakeFiles/control_algorithm.dir/control_algorithm/src/pino_kin_dyn.cpp.o" \
+"CMakeFiles/control_algorithm.dir/control_algorithm/src/planner.cpp.o" \
 "CMakeFiles/control_algorithm.dir/control_algorithm/src/pvt_ctrl.cpp.o" \
 "CMakeFiles/control_algorithm.dir/control_algorithm/src/useful_math.cpp.o"
 
@@ -137,11 +152,12 @@ control_algorithm_EXTERNAL_OBJECTS =
 
 libcontrol_algorithm.a: CMakeFiles/control_algorithm.dir/control_algorithm/src/lpf_fst.cpp.o
 libcontrol_algorithm.a: CMakeFiles/control_algorithm.dir/control_algorithm/src/pino_kin_dyn.cpp.o
+libcontrol_algorithm.a: CMakeFiles/control_algorithm.dir/control_algorithm/src/planner.cpp.o
 libcontrol_algorithm.a: CMakeFiles/control_algorithm.dir/control_algorithm/src/pvt_ctrl.cpp.o
 libcontrol_algorithm.a: CMakeFiles/control_algorithm.dir/control_algorithm/src/useful_math.cpp.o
 libcontrol_algorithm.a: CMakeFiles/control_algorithm.dir/build.make
 libcontrol_algorithm.a: CMakeFiles/control_algorithm.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/lj/project/force_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX static library libcontrol_algorithm.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/lj/project/force_control/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX static library libcontrol_algorithm.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/control_algorithm.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/control_algorithm.dir/link.txt --verbose=$(VERBOSE)
 

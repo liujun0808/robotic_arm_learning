@@ -12,6 +12,11 @@
 #include <vector>
 #include "data_bus.h"
 
+template <typename T>
+const T& clamp(const T& v, const T& lo, const T& hi) {
+    return (v < lo) ? lo : (hi < v) ? hi : v;
+}
+
 class Pin_KinDyn{
 public:
     std::vector<bool> motorReachLimit;

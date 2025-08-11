@@ -181,6 +181,19 @@ demo_dyn/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo_dyn.dir/build.make CMakeFiles/demo_dyn.dir/build
 .PHONY : demo_dyn/fast
 
+#=============================================================================
+# Target rules for targets named demo_traj_plan
+
+# Build rule for target.
+demo_traj_plan: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 demo_traj_plan
+.PHONY : demo_traj_plan
+
+# fast build rule for target.
+demo_traj_plan/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo_traj_plan.dir/build.make CMakeFiles/demo_traj_plan.dir/build
+.PHONY : demo_traj_plan/fast
+
 control_algorithm/src/lpf_fst.o: control_algorithm/src/lpf_fst.cpp.o
 .PHONY : control_algorithm/src/lpf_fst.o
 
@@ -228,6 +241,30 @@ control_algorithm/src/pino_kin_dyn.s: control_algorithm/src/pino_kin_dyn.cpp.s
 control_algorithm/src/pino_kin_dyn.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/control_algorithm.dir/build.make CMakeFiles/control_algorithm.dir/control_algorithm/src/pino_kin_dyn.cpp.s
 .PHONY : control_algorithm/src/pino_kin_dyn.cpp.s
+
+control_algorithm/src/planner.o: control_algorithm/src/planner.cpp.o
+.PHONY : control_algorithm/src/planner.o
+
+# target to build an object file
+control_algorithm/src/planner.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/control_algorithm.dir/build.make CMakeFiles/control_algorithm.dir/control_algorithm/src/planner.cpp.o
+.PHONY : control_algorithm/src/planner.cpp.o
+
+control_algorithm/src/planner.i: control_algorithm/src/planner.cpp.i
+.PHONY : control_algorithm/src/planner.i
+
+# target to preprocess a source file
+control_algorithm/src/planner.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/control_algorithm.dir/build.make CMakeFiles/control_algorithm.dir/control_algorithm/src/planner.cpp.i
+.PHONY : control_algorithm/src/planner.cpp.i
+
+control_algorithm/src/planner.s: control_algorithm/src/planner.cpp.s
+.PHONY : control_algorithm/src/planner.s
+
+# target to generate assembly for a file
+control_algorithm/src/planner.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/control_algorithm.dir/build.make CMakeFiles/control_algorithm.dir/control_algorithm/src/planner.cpp.s
+.PHONY : control_algorithm/src/planner.cpp.s
 
 control_algorithm/src/pvt_ctrl.o: control_algorithm/src/pvt_ctrl.cpp.o
 .PHONY : control_algorithm/src/pvt_ctrl.o
@@ -349,6 +386,30 @@ demo/demo_motor_param.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo_motor_param.dir/build.make CMakeFiles/demo_motor_param.dir/demo/demo_motor_param.cpp.s
 .PHONY : demo/demo_motor_param.cpp.s
 
+demo/demo_traj_plan.o: demo/demo_traj_plan.cpp.o
+.PHONY : demo/demo_traj_plan.o
+
+# target to build an object file
+demo/demo_traj_plan.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo_traj_plan.dir/build.make CMakeFiles/demo_traj_plan.dir/demo/demo_traj_plan.cpp.o
+.PHONY : demo/demo_traj_plan.cpp.o
+
+demo/demo_traj_plan.i: demo/demo_traj_plan.cpp.i
+.PHONY : demo/demo_traj_plan.i
+
+# target to preprocess a source file
+demo/demo_traj_plan.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo_traj_plan.dir/build.make CMakeFiles/demo_traj_plan.dir/demo/demo_traj_plan.cpp.i
+.PHONY : demo/demo_traj_plan.cpp.i
+
+demo/demo_traj_plan.s: demo/demo_traj_plan.cpp.s
+.PHONY : demo/demo_traj_plan.s
+
+# target to generate assembly for a file
+demo/demo_traj_plan.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo_traj_plan.dir/build.make CMakeFiles/demo_traj_plan.dir/demo/demo_traj_plan.cpp.s
+.PHONY : demo/demo_traj_plan.cpp.s
+
 sim_interface/src/GLFW_callback.o: sim_interface/src/GLFW_callback.cpp.o
 .PHONY : sim_interface/src/GLFW_callback.o
 
@@ -409,6 +470,7 @@ help:
 	@echo "... demo_dyn"
 	@echo "... demo_ik"
 	@echo "... demo_motor_param"
+	@echo "... demo_traj_plan"
 	@echo "... sim_interface"
 	@echo "... control_algorithm/src/lpf_fst.o"
 	@echo "... control_algorithm/src/lpf_fst.i"
@@ -416,6 +478,9 @@ help:
 	@echo "... control_algorithm/src/pino_kin_dyn.o"
 	@echo "... control_algorithm/src/pino_kin_dyn.i"
 	@echo "... control_algorithm/src/pino_kin_dyn.s"
+	@echo "... control_algorithm/src/planner.o"
+	@echo "... control_algorithm/src/planner.i"
+	@echo "... control_algorithm/src/planner.s"
 	@echo "... control_algorithm/src/pvt_ctrl.o"
 	@echo "... control_algorithm/src/pvt_ctrl.i"
 	@echo "... control_algorithm/src/pvt_ctrl.s"
@@ -431,6 +496,9 @@ help:
 	@echo "... demo/demo_motor_param.o"
 	@echo "... demo/demo_motor_param.i"
 	@echo "... demo/demo_motor_param.s"
+	@echo "... demo/demo_traj_plan.o"
+	@echo "... demo/demo_traj_plan.i"
+	@echo "... demo/demo_traj_plan.s"
 	@echo "... sim_interface/src/GLFW_callback.o"
 	@echo "... sim_interface/src/GLFW_callback.i"
 	@echo "... sim_interface/src/GLFW_callback.s"

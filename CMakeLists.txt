@@ -11,6 +11,7 @@ find_package(eigenpy REQUIRED)
 find_package(jsoncpp REQUIRED)
 find_package(glfw3 REQUIRED)
 find_package(qpOASES REQUIRED)
+find_package(ompl REQUIRED)
 set(QPOASES_INCLUDE_DIR "/opt/qpOASES/include")
 set(QPOASES_LIBRARY "/opt/qpOASES/lib/libqpOASES.a")  # 或者 .a
 
@@ -22,6 +23,7 @@ include_directories(
     ${QPOASES_INCLUDE_DIR}
     ${CMAKE_SOURCE_DIR}/sim_interface/include
     ${CMAKE_SOURCE_DIR}/control_algorithm/include
+    ${OMPL_INCLUDE_DIRS}
 )
 
 
@@ -40,7 +42,7 @@ target_link_libraries(sim_interface PUBLIC mujoco glfw)
 # control_algorithm
 file(GLOB CON_SRC ${CMAKE_SOURCE_DIR}/control_algorithm/src/*.cpp)
 add_library(control_algorithm STATIC ${CON_SRC})
-target_link_libraries(control_algorithm PUBLIC sim_interface pinocchio::pinocchio jsoncpp_lib ${QPOASES_LIBRARY})
+target_link_libraries(control_algorithm PUBLIC sim_interface pinocchio::pinocchio jsoncpp_lib ${QPOASES_LIBRARY} ${OMPL_LIBRARIES})
 
 # 生成可执行文件 
 add_executable(demo_motor_param ${CMAKE_SOURCE_DIR}/demo/demo_motor_param.cpp)
@@ -51,4 +53,7 @@ target_link_libraries(demo_ik sim_interface control_algorithm)
 
 add_executable(demo_dyn ${CMAKE_SOURCE_DIR}/demo/demo_dyn.cpp)
 target_link_libraries(demo_dyn sim_interface control_algorithm)
+
+add_executable(demo_traj_plan ${CMAKE_SOURCE_DIR}/demo/demo_traj_plan.cpp)
+target_link_libraries(demo_traj_plan sim_interface control_algorithm)
 

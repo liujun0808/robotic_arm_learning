@@ -1,5 +1,6 @@
 #include "pino_kin_dyn.h"
 
+
 Pin_KinDyn::Pin_KinDyn(std::string urdf_path){
     pinocchio::urdf::buildModel(urdf_path,arm);
     std::cout << "arm.nv:"<<arm.nv<<";model_biped.nq:"<<arm.nq<< std::endl;
@@ -131,8 +132,9 @@ Pin_KinDyn::IkRes Pin_KinDyn::computeIK(const Eigen::Matrix3d &tool_R_res,const 
     //  tool0_pos_res_[2] = tool0_pos_res[2] - 0.1575; 
     const pinocchio::SE3 oMdesL(tool_R_res,tool0_pos_res); // 在base 坐标系下tool0位姿，齐次变换矩阵转为 特殊欧式群
     Eigen::VectorXd qIk = Eigen::VectorXd::Zero(7);
-    // qIk<< 0,0.785398, 0 ,-1.5708 ,0, 0 ,0;
-    // qIk<< 0.0,0.0, 1.57, 0.0, 0.0, 0.0, 0.0;
+    qIk<< 0,0.785398, 0 ,-1.5708 ,0, 0 ,0;
+    // qIk<< arm.lowerPositionLimit[0],arm.lowerPositionLimit[1],
+    //  arm.lowerPositionLimit[2], arm.lowerPositionLimit[3], arm.lowerPositionLimit[4], arm.lowerPositionLimit[5], arm.lowerPositionLimit[7];
     // pinocchio::forwardKinematics(arm,data_arm,qIk);
     // pinocchio::updateFramePlacements(arm,data_arm);
     // pinocchio::SE3 test_q = data_arm.oMi[joint7];
@@ -147,9 +149,9 @@ Pin_KinDyn::IkRes Pin_KinDyn::computeIK(const Eigen::Matrix3d &tool_R_res,const 
     
     // 迭代参数设置
     const double eps = 1e-4;
-    const int IT_MAX  = 100;
-    const double DT   = 0.7;
-    const double damp = 1e-5;
+    const int IT_MAX  = 1000;
+    const double DT   = 1;
+    const double damp = 1e-6;
 
     pinocchio::Data::Matrix6x J(6,7);
     J.setZero();
@@ -187,6 +189,18 @@ Pin_KinDyn::IkRes Pin_KinDyn::computeIK(const Eigen::Matrix3d &tool_R_res,const 
         JJt.diagonal().array() += damp;
         q_delta.noalias() = -J.transpose() * JJt.ldlt().solve(err);
         qIk = pinocchio::integrate(arm, qIk, q_delta*DT);
+         for (int j = 0; j < 7; ++j) {
+            // 方法1：硬截断
+            qIk[j] = clamp(qIk[j],arm.lowerPositionLimit[j],arm.upperPositionLimit[j]);
+            
+            // 方法2：带惩罚的软限位（更平滑）
+            // if (qIk[j] < arm.lowerPositionLimit[j] + 0.1) {
+            //     qIk[j] = arm.lowerPositionLimit[j] + 0.1 * (1 - std::exp(-10*(arm.lowerPositionLimit[j] + 0.1 - qIk[j])));
+            // }
+            // if (qIk[j] > arm.upperPositionLimit[j] - 0.1) {
+            //     qIk[j] = arm.upperPositionLimit[j] - 0.1 * (1 - std::exp(-10*(qIk[j] - (arm.upperPositionLimit[j] - 0.1))));
+            // }
+        }
     }
     IkRes res;
     res.err = err;
@@ -203,5 +217,16 @@ Pin_KinDyn::IkRes Pin_KinDyn::computeIK(const Eigen::Matrix3d &tool_R_res,const 
 
 void Pin_KinDyn::print_tool0_pos(){
     pinocchio::SE3 test_q = data_arm.oMf[ee_link];
-    std::cout <<"ee_link id in urdf"<<ee_link<< "Translation: " << test_q.translation().transpose() << std::endl;
+    std::cout <<"tool0 Position in Pinocchio(base):" << test_q.translation().transpose() << std::endl;
+    // 打印旋转矩阵
+    Eigen::Matrix3d rot = test_q.rotation();
+    printf("Rotation Matrix in Pinocchio(base):\n");
+    for (int row = 0; row < 3; row++) {
+        printf("  [ ");
+        for (int col = 0; col < 3; col++) {
+            printf("% 8.5f ", rot(row,col));
+        }
+        printf("]\n");
+    }
+    std::cout<<"----------------------"<<std::endl;
 }

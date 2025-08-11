@@ -108,6 +108,15 @@ std::vector<double> eigen2std(const Eigen::VectorXd &eigenVector){
     return stdVector;
 }
 
+Eigen::VectorXd std2eigen(const std::vector<double> &stdVector){
+    Eigen::VectorXd eigenVector(stdVector.size());
+    for (size_t i = 0; i < stdVector.size(); i++)
+    {
+        eigenVector(i) = stdVector[i];
+    }
+    return eigenVector;
+}
+
 Eigen::Quaterniond eul2quat(double roll, double pitch, double yaw) {
     Eigen::Matrix3d R = eul2Rot(roll, pitch, yaw);
     Eigen::Quaternion<double> quatCur;
@@ -239,5 +248,15 @@ void  Limit(double &data, double max, double min){
         data = min;
 }
 
-
+bool isPositionReached(Eigen::VectorXd &qNow,Eigen::VectorXd &qRes){
+    for (size_t i = 0; i < qNow.size(); i++)
+    {
+        if (abs(qNow[i] - qRes[i])>0.0001)
+        {
+            return false;
+        }
+        
+    }
+    return true;
+}
 

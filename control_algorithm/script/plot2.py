@@ -70,7 +70,8 @@ def plot_three_windows(joint_file):
 
 if __name__ == "__main__":
     plot_three_windows(
-        joint_file="/home/lj/project/force_control/control_algorithm/data/q_err.txt"
+        joint_file="/home/lj/project/force_control/control_algorithm/data/q.txt"
+        # joint_file="/home/lj/project/force_control/control_algorithm/data/q_err.txt"
         # speed_file="/home/lj/project/force_control/control_algorithm/data/q_err.txt",
         # torque_file="/home/lj/project/force_control/control_algorithm/data/q_err.txt"
     )

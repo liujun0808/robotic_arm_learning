@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/opt/mujoco/include -I/usr/include/python3.8 -I/opt/qpOASES/include -I/home/lj/project/force_control/sim_interface/include -I/home/lj/project/force_control/control_algorithm/include
+CXX_INCLUDES = -I/opt/mujoco/include -I/usr/include/python3.8 -I/opt/qpOASES/include -I/home/lj/project/force_control/sim_interface/include -I/home/lj/project/force_control/control_algorithm/include -I/opt/ros/noetic/include/ompl-1.6 -I/usr/include/eigen3
 
 CXX_FLAGS = -O3 -DNDEBUG -std=gnu++17
 

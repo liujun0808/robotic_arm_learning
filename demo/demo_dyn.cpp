@@ -9,7 +9,6 @@
 #include "pvt_ctrl.h"
 #include "useful_math.h"
 
-
 const double dt = 0.001;
 char error[1000] = "Could  not load binary model";
 const char* MODEL_XML = "../model/iiwa_description/urdf/scene.xml";

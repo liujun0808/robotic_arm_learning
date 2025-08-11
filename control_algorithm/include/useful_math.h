@@ -27,6 +27,8 @@ Eigen::Quaterniond eul2quat(double roll, double pitch, double yaw);
 
 std::vector<double> eigen2std(const Eigen::VectorXd &Vec);
 
+Eigen::VectorXd std2eigen(const std::vector<double> &stdVector);
+
 Eigen::Matrix<double, 3, 1> diffRot(const Eigen::Matrix3d &Rcur, Eigen::Matrix3d &Rdes);
 
 Eigen::Matrix<double, 4, 1> quat2axisAngle(const Eigen::Quaternion<double> &quat);
@@ -46,4 +48,6 @@ double Ramp(double u, double tgt, double inc);
 void Limit(double &data, double max, double min);
 
 double sign(const double &x);
+
+bool isPositionReached(Eigen::VectorXd &qNow,Eigen::VectorXd &qRes);
 

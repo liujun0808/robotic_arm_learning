@@ -3,5 +3,6 @@
 /home/lj/project/force_control/build/CMakeFiles/demo_motor_param.dir
 /home/lj/project/force_control/build/CMakeFiles/demo_ik.dir
 /home/lj/project/force_control/build/CMakeFiles/demo_dyn.dir
+/home/lj/project/force_control/build/CMakeFiles/demo_traj_plan.dir
 /home/lj/project/force_control/build/CMakeFiles/edit_cache.dir
 /home/lj/project/force_control/build/CMakeFiles/rebuild_cache.dir

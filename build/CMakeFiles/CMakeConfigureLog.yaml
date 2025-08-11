@@ -625,3 +625,135 @@ events:
         201703
       exitCode: 0
 ...
+
+---
+events:
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "/opt/eigenpy/lib/cmake/eigenpy/cxx-standard.cmake:62 (try_run)"
+      - "/opt/eigenpy/lib/cmake/eigenpy/eigenpyConfig.cmake:196 (CHECK_MINIMAL_CXX_STANDARD)"
+      - "/usr/local/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "/opt/pinocchio/lib/cmake/pinocchio/pinocchioConfig.cmake:160 (find_dependency)"
+      - "CMakeLists.txt:9 (find_package)"
+    directories:
+      source: "/home/lj/project/force_control/build/CMakeFiles/CMakeTmp"
+      binary: "/home/lj/project/force_control/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "_cxx_standard_build_status"
+      cached: true
+      stdout: |
+        Change Dir: '/home/lj/project/force_control/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_3a58c/fast
+        make[1]: 进入目录“/home/lj/project/force_control/build/CMakeFiles/CMakeTmp”
+        /usr/bin/make  -f CMakeFiles/cmTC_3a58c.dir/build.make CMakeFiles/cmTC_3a58c.dir/build
+        make[2]: 进入目录“/home/lj/project/force_control/build/CMakeFiles/CMakeTmp”
+        Building CXX object CMakeFiles/cmTC_3a58c.dir/tmp-cxx-standard.cpp.o
+        /usr/bin/c++   -std=gnu++17 -o CMakeFiles/cmTC_3a58c.dir/tmp-cxx-standard.cpp.o -c /home/lj/project/force_control/build/cmake/tmp-cxx-standard.cpp
+        Linking CXX executable cmTC_3a58c
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3a58c.dir/link.txt --verbose=1
+        /usr/bin/c++ "CMakeFiles/cmTC_3a58c.dir/tmp-cxx-standard.cpp.o" -o cmTC_3a58c 
+        make[2]: 离开目录“/home/lj/project/force_control/build/CMakeFiles/CMakeTmp”
+        make[1]: 离开目录“/home/lj/project/force_control/build/CMakeFiles/CMakeTmp”
+        
+      exitCode: 0
+    runResult:
+      variable: "_cxx_standard_run_status"
+      cached: true
+      stdout: |
+        201703
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "/opt/eigenpy/lib/cmake/eigenpy/cxx-standard.cmake:62 (try_run)"
+      - "/opt/eigenpy/lib/cmake/eigenpy/eigenpyConfig.cmake:196 (CHECK_MINIMAL_CXX_STANDARD)"
+      - "/usr/local/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "/opt/pinocchio/lib/cmake/pinocchio/pinocchioConfig.cmake:160 (find_dependency)"
+      - "CMakeLists.txt:9 (find_package)"
+    directories:
+      source: "/home/lj/project/force_control/build/CMakeFiles/CMakeTmp"
+      binary: "/home/lj/project/force_control/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "_cxx_standard_build_status"
+      cached: true
+      stdout: |
+        Change Dir: '/home/lj/project/force_control/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_18195/fast
+        make[1]: 进入目录“/home/lj/project/force_control/build/CMakeFiles/CMakeTmp”
+        /usr/bin/make  -f CMakeFiles/cmTC_18195.dir/build.make CMakeFiles/cmTC_18195.dir/build
+        make[2]: 进入目录“/home/lj/project/force_control/build/CMakeFiles/CMakeTmp”
+        Building CXX object CMakeFiles/cmTC_18195.dir/tmp-cxx-standard.cpp.o
+        /usr/bin/c++   -std=gnu++17 -o CMakeFiles/cmTC_18195.dir/tmp-cxx-standard.cpp.o -c /home/lj/project/force_control/build/cmake/tmp-cxx-standard.cpp
+        Linking CXX executable cmTC_18195
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_18195.dir/link.txt --verbose=1
+        /usr/bin/c++ "CMakeFiles/cmTC_18195.dir/tmp-cxx-standard.cpp.o" -o cmTC_18195 
+        make[2]: 离开目录“/home/lj/project/force_control/build/CMakeFiles/CMakeTmp”
+        make[1]: 离开目录“/home/lj/project/force_control/build/CMakeFiles/CMakeTmp”
+        
+      exitCode: 0
+    runResult:
+      variable: "_cxx_standard_run_status"
+      cached: true
+      stdout: |
+        201703
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_run-v1"
+    backtrace:
+      - "/opt/eigenpy/lib/cmake/eigenpy/cxx-standard.cmake:62 (try_run)"
+      - "/opt/eigenpy/lib/cmake/eigenpy/eigenpyConfig.cmake:196 (CHECK_MINIMAL_CXX_STANDARD)"
+      - "/usr/local/share/cmake-3.28/Modules/CMakeFindDependencyMacro.cmake:76 (find_package)"
+      - "/opt/pinocchio/lib/cmake/pinocchio/pinocchioConfig.cmake:160 (find_dependency)"
+      - "CMakeLists.txt:9 (find_package)"
+    directories:
+      source: "/home/lj/project/force_control/build/CMakeFiles/CMakeTmp"
+      binary: "/home/lj/project/force_control/build/CMakeFiles/CMakeTmp"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "_cxx_standard_build_status"
+      cached: true
+      stdout: |
+        Change Dir: '/home/lj/project/force_control/build/CMakeFiles/CMakeTmp'
+        
+        Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_30837/fast
+        make[1]: 进入目录“/home/lj/project/force_control/build/CMakeFiles/CMakeTmp”
+        /usr/bin/make  -f CMakeFiles/cmTC_30837.dir/build.make CMakeFiles/cmTC_30837.dir/build
+        make[2]: 进入目录“/home/lj/project/force_control/build/CMakeFiles/CMakeTmp”
+        Building CXX object CMakeFiles/cmTC_30837.dir/tmp-cxx-standard.cpp.o
+        /usr/bin/c++   -std=gnu++17 -o CMakeFiles/cmTC_30837.dir/tmp-cxx-standard.cpp.o -c /home/lj/project/force_control/build/cmake/tmp-cxx-standard.cpp
+        Linking CXX executable cmTC_30837
+        /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_30837.dir/link.txt --verbose=1
+        /usr/bin/c++ "CMakeFiles/cmTC_30837.dir/tmp-cxx-standard.cpp.o" -o cmTC_30837 
+        make[2]: 离开目录“/home/lj/project/force_control/build/CMakeFiles/CMakeTmp”
+        make[1]: 离开目录“/home/lj/project/force_control/build/CMakeFiles/CMakeTmp”
+        
+      exitCode: 0
+    runResult:
+      variable: "_cxx_standard_run_status"
+      cached: true
+      stdout: |
+        201703
+      exitCode: 0
+...

@@ -254,6 +254,21 @@ ENFORCE_MINIMAL_CXX_STANDARD:BOOL=OFF
 //The directory containing a CMake configuration file for Eigen3.
 Eigen3_DIR:PATH=/usr/lib/cmake/eigen3
 
+//Path to a library.
+OMPLAPPBASE_LIBRARY:FILEPATH=OMPLAPPBASE_LIBRARY-NOTFOUND
+
+//Path to a library.
+OMPLAPP_LIBRARY:FILEPATH=OMPLAPP_LIBRARY-NOTFOUND
+
+//Include path for OMPL and its dependencies
+OMPL_INCLUDE_DIRS:STRING=/opt/ros/noetic/include/ompl-1.6;/usr/include;/usr/include/eigen3
+
+//Path to a library.
+OMPL_LIBRARIES:FILEPATH=/opt/ros/noetic/lib/x86_64-linux-gnu/libompl.so
+
+//Library path for OMPL and its dependencies
+OMPL_LIBRARY_DIRS:STRING=/opt/ros/noetic/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu
+
 //Enable Debian-style Python package layout
 PYTHON_DEB_LAYOUT:BOOL=OFF
 
@@ -264,7 +279,7 @@ PYTHON_STANDARD_LAYOUT:BOOL=ON
 console_bridge_DIR:PATH=/usr/lib/x86_64-linux-gnu/console_bridge/cmake
 
 //Dependencies for the target
-control_algorithm_LIB_DEPENDS:STATIC=general;sim_interface;general;jsoncpp_lib;general;/opt/qpOASES/lib/libqpOASES.a;
+control_algorithm_LIB_DEPENDS:STATIC=general;sim_interface;general;jsoncpp_lib;general;/opt/qpOASES/lib/libqpOASES.a;general;/opt/ros/noetic/lib/x86_64-linux-gnu/libompl.so;general;/usr/lib/x86_64-linux-gnu/libboost_serialization.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;ode;
 
 //The directory containing a CMake configuration file for eigenpy.
 eigenpy_DIR:PATH=/opt/eigenpy/lib/cmake/eigenpy
@@ -283,6 +298,9 @@ glfw3_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/glfw3
 
 //The directory containing a CMake configuration file for jsoncpp.
 jsoncpp_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/jsoncpp
+
+//The directory containing a CMake configuration file for ompl.
+ompl_DIR:PATH=/opt/ros/noetic/share/ompl/cmake
 
 //Path to a library.
 onelib:FILEPATH=/usr/lib/x86_64-linux-gnu/liburdfdom_world.so
@@ -487,6 +505,8 @@ CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/include][cfound components: python38 ][v1.71.0()]
 //Details about finding Python3
 FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[/usr/bin/python3.8][/usr/include/python3.8][/home/lj/.local/lib/python3.8/site-packages/numpy/core/include][cfound components: Interpreter Development.Module NumPy ][v3.8.10()]
+//Details about finding ompl
+FIND_PACKAGE_MESSAGE_DETAILS_ompl:INTERNAL=[/opt/ros/noetic/include/ompl-1.6;/usr/include;/usr/include/eigen3][/opt/ros/noetic/lib/x86_64-linux-gnu;/usr/lib/x86_64-linux-gnu][/opt/ros/noetic/lib/x86_64-linux-gnu/libompl.so;/usr/lib/x86_64-linux-gnu/libboost_serialization.so;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;/usr/lib/x86_64-linux-gnu/libboost_system.so;ode][v()]
 //Details about finding qpOASES
 FIND_PACKAGE_MESSAGE_DETAILS_qpOASES:INTERNAL=[/opt/qpOASES/include][/opt/qpOASES/lib][/opt/qpOASES/lib/libqpOASES.a][3.2.2][v()]
 //Components requested for this build tree.
