@@ -55,7 +55,7 @@
   </asset>
 
   <worldbody>
-    <light name="top" pos="0 0 2" mode="trackcom"/>
+    <!-- <light name="top" pos="0 0 2" mode="trackcom"/> -->
     <body name="base" childclass="iiwa">
       <!-- color -->
       <geom type="cylinder" size="0.005 0.1" rgba="1 0 0 1" pos="0.1 0 0" euler="0 -1.57  0" />
@@ -152,10 +152,10 @@
                     <geom class="visual" mesh="link_7"/>
                     <geom class="collision" size="0.06" pos="0 0 0.001"/>
                     <site pos="0 0 0.045" name="attachment_site" />
-                    <!-- color -->
-                    <geom type="cylinder" size="0.005 0.1" rgba="1 0 0 1" pos="0.1 0 0.05" euler="0 -1.57  0" />
-                    <geom type="cylinder" size="0.005 0.1" rgba="0 1 0 1" pos="0 0.1 0.05" euler="-1.57 0 0" />
-                    <geom type="cylinder" size="0.005 0.1" rgba="0 0 1 1" pos="0 0 0.1" euler="0 0 0" />
+                    <!-- color frame -->
+                    <geom type="cylinder" size="0.005 0.02" rgba="1 0 0 1" pos="0.02 0 0.045" euler="0 -1.57  0" />
+                    <geom type="cylinder" size="0.005 0.02" rgba="0 1 0 1" pos="0 0.02 0.045" euler="-1.57 0 0" />
+                    <geom type="cylinder" size="0.005 0.02" rgba="0 0 1 1" pos="0 0 0.065" euler="0 0 0" />
                   </body>
                 </body>
               </body>

@@ -11,7 +11,9 @@
 
 const double dt = 0.001;
 char error[1000] = "Could  not load binary model";
-const char* MODEL_XML = "../model/iiwa_description/urdf/scene.xml";
+// const char* MODEL_XML = "../model/iiwa_description/urdf/scene.xml";
+const char* MODEL_XML = "/home/lj/project/force_control/model/kuka_iiwa_14/scene.xml";
+
 
 void printWorldPose(const mjModel* model, const mjData* data,
                        const std::string& body)

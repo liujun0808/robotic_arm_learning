@@ -20,7 +20,39 @@ namespace og = ompl::geometric;
 
 const double dt = 0.001;
 char error[1000] = "Could  not load binary model";
-const char* MODEL_XML = "../model/iiwa_description/urdf/scene.xml";
+// const char* MODEL_XML = "../model/iiwa_description/urdf/scene.xml"; 
+const char* MODEL_XML = "/home/lj/project/force_control/model/iiwa_description/urdf/scene.xml"; 
+
+void printWorldPose(const mjModel* model, const mjData* data,
+                       const std::string& body)
+{
+    // int body_id = mj_name2id(model, mjOBJ_JOINT, body.c_str());
+    int site_id = mj_name2id(model, mjOBJ_BODY, body.c_str());
+    if (site_id == -1) {
+        std::cerr << "Error: Body not found!" << std::endl;
+        return;
+    }
+
+    const mjtNum* position = data->xpos + 3 * site_id;
+     // 获取世界坐标系中的旋转矩阵（3x3）
+    const mjtNum* rotation = data->xmat + 9 * site_id;
+
+    // 打印位置信息
+        printf("Position in World Frame:\n");
+        printf("  X: %8.4f, Y: %8.4f, Z: %8.4f\n", 
+            position[0], position[1], position[2]);
+        
+        // 打印旋转矩阵
+        printf("Rotation Matrix (World Frame):\n");
+        for (int row = 0; row < 3; row++) {
+            printf("  [ ");
+            for (int col = 0; col < 3; col++) {
+                printf("% 8.5f ", rotation[3 * row + col]);
+            }
+            printf("]\n");
+        }
+
+}
 
 void printWorldPose(const mjModel* model, const mjData* data,
                        const std::string& body,int site)
@@ -58,7 +90,6 @@ int main(int argc, char **argv)
 {   
     mjModel *mj_model = mj_loadXML(MODEL_XML,0,error,1000);
     mjData *mj_data = mj_makeData(mj_model);
-    
     UIctr ui(mj_model,mj_data);
     MJ_Interface mj_interface(mj_model,mj_data);
     Pin_KinDyn KinDynSolve("/home/lj/project/force_control/model/iiwa_description/urdf/iiwa14.urdf");
@@ -205,6 +236,7 @@ int main(int argc, char **argv)
         {   
             std::cout<<"----------------------"<<std::endl;
             printWorldPose(mj_model,mj_data,"attachment_site",0);
+            // printWorldPose(mj_model,mj_data,"link7");
             std::cout<<"----------------------"<<std::endl;
             KinDynSolve.print_tool0_pos();
             break;
